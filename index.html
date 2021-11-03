@@ -1,0 +1,129 @@
+<!CODETYPE HTML>
+
+<html>
+
+	<head>
+	<title>Rock Paper Scissors</title>
+	<meta charset="UTF8">
+	</head>
+
+	<body>
+	<!-- the idea here was to use buttons instead of having to type in user inputs. I couldnt figure 
+	out how to run the function and return a string.
+	<button type="button" id="myBtn" onclick="rock()">Rock</button>
+	
+	<button type="button" id="myBtn" onclick="paper()">Paper</button>
+	
+	<button type="button" id="myBtn" onclick="scissor()">Scissors</button>
+	-->
+	</body>
+	
+	<script>
+	var myMove = window.prompt(' Enter "rock", "paper", or "scissors"  ');
+	
+	function playerMove(moveThrow){
+		if (moveThrow === "rock"){
+			moveValue = "rock"
+			}
+		else if (moveThrow === "paper"){
+			moveValue = "paper"
+			}
+		else if (moveThrow === "scissors"){
+			moveValue = "scissors"
+			}	
+		else {
+			console.log("incorrect input please refresh the page and try again");
+			}	
+			
+			return moveValue
+		}
+		
+		
+		let bunny = playerMove(myMove);
+		//console.log(bunny);
+		
+	/*This area didnt work. The idea was we could take user inputs and convert them to numbers making comparing them
+	to our opponents move easier. The way we got it to work was more cumbersom but works.
+	function rock(){
+		return .32
+		}
+	myMove = rock()
+	console.log(myMove)
+	
+		function paper(){
+		return .65
+		}
+		myMove = paper()
+	console.log(myMove)*/
+	
+	let rndNum = Math.floor(Math.random()*100)+1
+	//console.log(rndNum);
+	
+	let opponent = ""
+	
+	function myOpponentMove(number){
+		
+		//console.log(number);
+		
+		if (number < 33){
+		oppMove ="rock";
+			}
+			
+		else if(number > 66){
+			oppMove = "paper";
+			}	
+			
+		else{
+			oppMove ="scissors";
+			}
+			
+			//console.log(oppMove);
+			return oppMove;
+		}
+		
+		let computerMove = myOpponentMove(rndNum)
+		//console.log(computerMove);
+		
+		function game(inputMove, computerMove){
+			if (inputMove === computerMove){
+				final = "the game has ended in a tie"
+				}
+				
+			else if(inputMove === "rock" && computerMove === "paper"){
+				final = "You played rock and your opponent played paper... so ya lost"
+				}
+				
+			else if(inputMove === "rock" && computerMove === "scissors"){
+				final = "You played rock and your opponent played scissors... WINNER"
+				}	
+			
+			else if(inputMove === "paper" && computerMove === "scissors"){
+				final = "You played paper and your opponent played scissors... oops thats an L"
+				}
+
+			else if(inputMove === "paper" && computerMove === "rock"){
+				final = "You played paper and your opponent played rock... Hotdog ya winner"
+				}
+				
+			else if(inputMove === "scissors" && computerMove === "rock"){
+				final = "You played scissors and your opponent played rock... ouch -1 points for gryffindor"
+				}	
+			else if(inputMove === "scissors" && computerMove === "paper"){
+				final = "You played scissors and your opponent played rock... Count it!"
+				}	
+			else
+			{
+				final = "We did not anticipate you would type that... don/'t do it again"
+				}
+				
+			return final
+			}
+		
+		let finalResults = game(moveValue,oppMove)
+		
+				console.log(finalResults);
+
+	
+	</script>
+	
+</html>
